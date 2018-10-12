@@ -1,0 +1,52 @@
+{
+    "homepage": "https://www.jam-software.com/treesize_free/",
+    "version": "4.2",
+    "url": [
+        "https://www.jam-software.de/treesize_free/TreeSizeFree-Portable.zip",
+        "https://raw.githubusercontent.com/joserebelo/scoop-bucket/master/scripts/treesize-context-install.reg",
+        "https://raw.githubusercontent.com/joserebelo/scoop-bucket/master/scripts/treesize-context-uninstall.reg"
+    ],
+    "hash": [
+        "09adb51c5bbfe3091ac4185bda280b543803128c9de611d287610da0914e8f84",
+        "7e47f065ebb3fcff30554761708ecc3281ccfda0a8a5e79ce33f12d3cd8ebb3a",
+        "23b6cc9056a649942692d5ae8e17fdae83c483c99a7ff4710d215415ffb2e565"
+    ],
+    "notes": [
+        "Add TreeSize as a context menu option by running: '$dir\\treesize-context-install.reg'"
+    ],
+    "bin": [
+        [
+            "TreeSizeFree.exe",
+            "treesize"
+        ]
+    ],
+    "pre_install": [
+        "ForEach ($emptyFile in $manifest.persist) {",
+        "    if (!(Test-Path \"$dir\\$emptyFile\")) {",
+        "        Set-Content \"$dir\\$emptyFile\" -value $null",
+        "    }",
+        "}"
+    ],
+    "post_install": [
+        "if(Test-Path(\"$dir\\treesize-context-install.reg\")) {",
+        "  $treesizepath = \"$dir\\TreeSizeFree.exe\".Replace('\\', '\\\\')",
+        "  $content = Get-Content \"$dir\\treesize-context-install.reg\"",
+        "  $content = $content.Replace('$treesize', $treesizepath)",
+        "  $content | Set-Content -Path \"$dir\\treesize-context-install.reg\"",
+        "}"
+    ],
+    "persist": [
+        "GlobalOptions.xml",
+        "RibbonOptions.xml"
+    ],
+    "shortcuts": [
+        [
+            "TreeSizeFree.exe",
+            "TreeSize"
+        ]
+    ],
+    "checkver": "<span class='uppercase'>v((?:\\d|\\.)+)</span>",
+    "autoupdate": {
+        "url": "https://www.jam-software.de/treesize_free/TreeSizeFree-Portable.zip"
+    }
+}
