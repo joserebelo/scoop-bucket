@@ -1,0 +1,20 @@
+{
+    "homepage": "https://ibotpeaches.github.io/Apktool/",
+    "version": "2.3.4",
+    "license": "Apache-2.0",
+    "url": [
+        "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.3.4.jar#/apktool.jar",
+        "https://bitbucket.org/iBotPeaches/apktool/raw/master/scripts/windows/apktool.bat"
+    ],
+    "hash": [
+        "758b1bd58f9c9dd5ca85258d31c75f32e5878a502e3d75c66f3bfacf74b9dc1d",
+        "0589b92f92f560c566d9c6906cc1fe24d50dc804ef88d0ba5fbe5e0908697398"
+    ],
+    "bin": [
+        "apktool.bat"
+    ],
+    "checkver": "Current Version: <strong>((?:\\d|\\.)+)</strong>",
+    "autoupdate": {
+        "url": "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_$version.jar"
+    }
+}
