@@ -1,0 +1,20 @@
+{
+    "homepage": "https://github.com/netheril96/securefs",
+    "version": "0.8.2",
+    "license": "MIT",
+    "url": "https://github.com/netheril96/securefs/releases/download/0.8.2/securefs-win.7z",
+    "hash": "42346e935664b5edd6081a8d31efa280c7a082166afa041bc513ccc9f30da2f8",
+    "architecture": {
+        "32bit": {
+            "extract_dir": "win32/Release"
+        },
+        "64bit": {
+            "extract_dir": "win64/Release"
+        }
+    },
+    "bin": "securefs.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/netheril96/securefs/releases/download/$version/securefs-win.7z"
+    }
+}
