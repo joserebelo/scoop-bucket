@@ -1,0 +1,55 @@
+{
+    "homepage": "http://www.clonespy.com/",
+    "version": "3.41",
+    "url": "http://www.clonespy.com/english/download/cspy341.exe#/dl.7z",
+    "hash": "57c1e2824f4fa0deeef6cfd87f2234e828611a2ab9628f427c57dd8efddceb0f",
+    "pre_install": [
+        "ForEach ($emptyFile in $manifest.persist) {",
+        "    if (!(Test-Path \"$dir\\$emptyFile\")) {",
+        "        Set-Content \"$dir\\$emptyFile\" -value $null",
+        "    }",
+        "}"
+    ],
+    "post_install": [
+        "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse",
+        "Remove-Item \"$dir\\`$_69_\""
+    ],
+    "persist": [
+        "CloneSpy.ini",
+        "CSDefault.cst"
+    ],
+    "architecture": {
+        "32bit": {
+            "bin": [
+                [
+                    "CloneSpy.exe",
+                    "clonespy"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "CloneSpy.exe",
+                    "CloneSpy"
+                ]
+            ]
+        },
+        "64bit": {
+            "bin": [
+                [
+                    "CloneSpy64.exe",
+                    "clonespy"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "CloneSpy64.exe",
+                    "CloneSpy"
+                ]
+            ]
+        }
+    },
+    "checkver": "Latest version: <strong>((?:\\d|\\.)+)</strong>",
+    "autoupdate": {
+        "url": "http://www.clonespy.com/english/download/cspy$cleanVersion.exe"
+    }
+}
