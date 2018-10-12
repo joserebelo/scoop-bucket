@@ -1,0 +1,46 @@
+{
+    "homepage": "https://crystalmark.info/en/software/crystaldiskmark/",
+    "version": "6.0.1",
+    "url": "https://osdn.net/frs/redir.php?f=crystaldiskmark%2F68624%2FCrystalDiskMark6_0_1.zip#/CrystalDiskMark6_0_1.zip",
+    "hash": "456034ace9fe1dcf723c9618f368e7ce9b97267ceec7a2e9d7854c3c3090201b",
+    "persist": [
+        "DiskMark32.ini",
+        "DiskMark64.ini"
+    ],
+    "pre_install": [
+        "ForEach ($emptyFile in $manifest.persist) {",
+        "    if (!(Test-Path \"$dir\\$emptyFile\")) {",
+        "        Set-Content \"$dir\\$emptyFile\" -value $null",
+        "    }",
+        "}"
+    ],
+    "architecture": {
+        "32bit": {
+            "shortcuts": [
+                [
+                    "DiskMark32.exe",
+                    "CrystalDiskMark"
+                ]
+            ]
+        },
+        "64bit": {
+            "shortcuts": [
+                [
+                    "DiskMark64.exe",
+                    "CrystalDiskMark"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://osdn.net/projects/crystaldiskmark/",
+        "re": "Latest Release[\\w\\W]+?<a href=\"\\/projects\\/crystaldiskmark\\/releases\\/(?<build>\\d+)\">CrystalDiskMark (?<version>[\\.\\d]+)"
+    },
+    "autoupdate": {
+        "url": "https://osdn.net/frs/redir.php?f=crystaldiskmark%2F$matchBuild%2FCrystalDiskMark$underscoreVersion.zip#/CrystalDiskMark$underscoreVersion.zip",
+        "hash": {
+            "url": "https://osdn.net/projects/crystaldiskmark/downloads/$matchBuild/CrystalDiskMark$underscoreVersion.zip/",
+            "find": "<dt>SHA256<\\/dt>\\s+<dd>([A-Fa-f0-9]{64})"
+        }
+    }
+}
